@@ -12,7 +12,7 @@ require('dotenv').config()  // Charge la variable d'environnement
 
 
 // Connection de l'API au cluster de mongoDB
-mongoose.connect('mongodb+srv://jercomec83:Mayfair83@cluster0.nc3mb.mongodb.net/piquante?retryWrites=true&w=majority',
+mongoose.connect(process.env.MONGODB_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -21,7 +21,8 @@ mongoose.connect('mongodb+srv://jercomec83:Mayfair83@cluster0.nc3mb.mongodb.net/
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 // Securisation des en-têtes html
-app.use(helmet());
+//app.use(helmet());
+app.use(helmet.frameguard())
 
  // Middleware appliqué à toutes les routes, permettant l'envoie de requête et d'accéder à l'API 
 app.use((req, res, next) => {

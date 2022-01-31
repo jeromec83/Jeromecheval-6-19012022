@@ -15,6 +15,7 @@ exports.createSauce = (req, res, next) => {
       usersLiked: '',
       usersDisliked: ''
     });
+    console.log(sauce.imageUrl);
     sauce.save()// Enregistre dans la db l'objet et renvoie une promesse
       .then(() => res.status(201).json({ message: 'Nouvelle sauce enregistrée !'}))
       .catch(error => res.status(400).json({ error }));
