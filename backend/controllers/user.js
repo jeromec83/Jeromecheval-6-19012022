@@ -30,7 +30,7 @@ exports.signup = (req, res, next) => {
   }
 };
 
-// Connexion à un compte utilisateur
+// Connexion à un compte utilisateur deja existant
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
       .then(user => {
