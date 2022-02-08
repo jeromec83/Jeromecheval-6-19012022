@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, callback) => {
         const extension = MIME_TYPES[file.mimetype];
-        callback(null, `${Date.now()}.${extension}`);
+        callback(null, Date.now() + '.' + extension);
     } // Indique à multer de remplacer le nom d'origine par un timestamp 
 });
 // Importation de multer et indique qu'on gère uniquement les téléchargements de fichiers image
